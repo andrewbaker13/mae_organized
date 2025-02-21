@@ -1,4 +1,4 @@
-/* Use a modern, professional sans-serif font for all visible text */
+/* Global Styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 20px;
@@ -18,7 +18,7 @@ body {
   margin: 5px 0;
 }
 
-/* Model Equation and MAE Display */
+/* Model Equations and MAE Display */
 .model-equation {
   text-align: left;
   font-weight: bold;
@@ -26,7 +26,12 @@ body {
   margin-bottom: 10px;
 }
 
-/* Group related controls */
+/* Increase only the dynamic values by 50% */
+.dynamic-value {
+  font-size: 150%;
+}
+
+/* Control Groups */
 .control-group {
   margin-bottom: 10px;
 }
@@ -42,7 +47,7 @@ body {
   margin-right: 10px;
 }
 
-/* Slider thumb styling */
+/* Slider Thumb Styling */
 input[type="range"]::-webkit-slider-thumb {
   background: red;
   border: none;
@@ -61,7 +66,7 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
 }
 
-/* Instructions & Questions Box */
+/* Instructions & Questions Boxes */
 #instructions, #questions {
   margin: 20px 0;
   padding: 10px;
@@ -74,7 +79,7 @@ input[type="range"]::-moz-range-thumb {
   padding-left: 20px;
 }
 
-/* Separator styling */
+/* Separator Styling */
 .separator {
   border: 1px solid black;
   margin: 20px 0;
