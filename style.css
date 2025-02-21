@@ -1,0 +1,81 @@
+/* Use a modern, professional sans-serif font for all visible text */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+}
+
+/* Introductory Section */
+.intro {
+  margin-bottom: 30px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.intro .equation {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 5px 0;
+}
+
+/* Model Equation and MAE Display */
+.model-equation {
+  text-align: left;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+/* Group related controls */
+.control-group {
+  margin-bottom: 10px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.control-group input[type="range"],
+.control-group input[type="number"] {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* Slider thumb styling */
+input[type="range"]::-webkit-slider-thumb {
+  background: red;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: red;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Instructions & Questions Box */
+#instructions, #questions {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #eef;
+}
+
+#questions ul, #questions ol {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+/* Separator styling */
+.separator {
+  border: 1px solid black;
+  margin: 20px 0;
+}
