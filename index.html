@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Search Ads & Revenue: Calibrate Your Response Model!</title>
   
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="styles.css" />
+  
   <!-- Plotly Library -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   
@@ -12,95 +15,6 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  
-  <!-- CSS styling for the page -->
-  <style>
-    /* Use a modern, professional sans-serif font for all visible text */
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 20px;
-    }
-    
-    /* Introductory Section */
-    .intro {
-      margin-bottom: 30px;
-      padding: 15px;
-      border: 1px solid #ccc;
-      background-color: #f9f9f9;
-    }
-    
-    .intro .equation {
-      font-size: 16px;
-      font-weight: normal;
-      margin: 5px 0;
-    }
-    
-    /* Model equations and MAE displays */
-    .model-equation {
-      text-align: left;
-      font-weight: bold;
-      margin-left: 20px;
-      margin-bottom: 10px;
-    }
-    
-    /* Increase the font size for MAE displays by 50% */
-    #mae_linear, #mae_quadratic {
-      font-size: 150%;
-    }
-    
-    /* Group related controls */
-    .control-group {
-      margin-bottom: 10px;
-    }
-    
-    .control-group label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    
-    .control-group input[type="range"],
-    .control-group input[type="number"] {
-      vertical-align: middle;
-      margin-right: 10px;
-    }
-    
-    /* Customize the slider thumb to be red */
-    input[type="range"]::-webkit-slider-thumb {
-      background: red;
-      border: none;
-      height: 16px;
-      width: 16px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-    input[type="range"]::-moz-range-thumb {
-      background: red;
-      border: none;
-      height: 16px;
-      width: 16px;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-    
-    /* Styling for instructions and exploratory questions */
-    #instructions, #questions {
-      margin: 20px 0;
-      padding: 10px;
-      border: 1px solid #ddd;
-      background-color: #eef;
-    }
-    
-    #questions ul, #questions ol {
-      margin: 10px 0;
-      padding-left: 20px;
-    }
-    
-    /* Separator styling */
-    .separator {
-      border: 1px solid black;
-      margin: 20px 0;
-    }
-  </style>
 </head>
 <body>
   <!-- Fun and Engaging Title -->
@@ -202,7 +116,7 @@
     </ol>
   </div>
   
-  <!-- JavaScript file (app.js) is loaded at the end -->
+  <!-- External JavaScript -->
   <script src="app.js" defer></script>
 </body>
 </html>
