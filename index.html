@@ -29,13 +29,13 @@
       <strong>Scenario:</strong> Imagine you have run 30 different Search Ad campaigns last month and recorded the revenue generated from converting those ads. Each blue dot on the chart represents one campaign. We want to build a simple relationship between Search Ad Spending and Revenue using both a linear and a quadratic model. We use MAE to gauge how well each model fits the data.
     </p>
     <p class="equation">
-      <strong>MAE:</strong> $$\text{MAE} = \frac{1}{N}\sum_{i=1}^{N}\left|y_i - \hat{y}_i\right|$$
+      <strong>MAE:</strong> $$\text{MAE} = \frac{1}{N}\sum_{i=1}^{N}\left|y_i - \hat{y}_i\right| = \frac{1}{N}\sum_{i=1}^{N}\left|ActualREVENUE - PredictedREVENUE\right|$$
     </p>
     <p class="equation">
-      <strong>Linear Model:</strong> $$\hat{y} = B_0 + B_1 \cdot \text{Search\_AdSpending}$$
+      <strong>Linear Model:</strong> $$\hat{y} = REVENUE = B_0 + B_1 \cdot \text{Search_AdSpending}$$
     </p>
     <p class="equation">
-      <strong>Quadratic Model:</strong> $$\hat{y} = B_0 + B_1 \cdot \text{Search\_AdSpending} + B_2 \cdot \text{Search\_AdSpending}^2$$
+      <strong>Quadratic Model:</strong> $$\hat{y} = REVENUE = B_0 + B_1 \cdot \text{Search_AdSpending} + B_2 \cdot \text{Search_AdSpending}^2$$
     </p>
     <p>
       <em>Plain Language Definition:</em> MAE represents the average absolute difference between the actual revenue and the model’s predicted revenue. All else equal, a lower MAE indicates a better-fitting model, though model evaluation is more nuanced than just a single metric.
