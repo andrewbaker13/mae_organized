@@ -29,16 +29,16 @@
       <strong>Scenario:</strong> Imagine you have run 30 different Search Ad campaigns last month and recorded the revenue generated from converting those ads. Each blue dot on the chart represents one campaign. We want to build a simple relationship between Search Ad Spending and Revenue using both a linear and a quadratic model. We use MAE to gauge how well each model fits the data.
     </p>
     <p class="equation">
-      <strong>MAE:</strong> $$\text{MAE} = \frac{1}{N}\sum_{i=1}^{N}\left|y_i - \hat{y}_i\right| = \frac{1}{N}\sum_{i=1}^{N}\left|ActualREVENUE - PredictedREVENUE\right|$$
+      <strong>MAE:</strong> $$\text{MAE} = \frac{1}{N}\sum_{i=1}^{N}\left|y_i - \hat{y}_i\right|$$
     </p>
     <p class="equation">
-      <strong>Linear Model:</strong> $$\hat{y} = PredictedREVENUE = B_0 + B_1 \cdot \text{Search_AdSpending}$$
+      <strong>Linear Model:</strong> $$\hat{y} = B_0 + B_1 \cdot \text{Search\_AdSpending}$$
     </p>
     <p class="equation">
-      <strong>Quadratic Model:</strong> $$\hat{y} = PredictedREVENUE = B_0 + B_1 \cdot \text{Search_AdSpending} + B_2 \cdot \text{Search_AdSpending}^2$$
+      <strong>Quadratic Model:</strong> $$\hat{y} = B_0 + B_1 \cdot \text{Search\_AdSpending} + B_2 \cdot \text{Search\_AdSpending}^2$$
     </p>
     <p>
-      <em>Plain Language Definition:</em> MAE represents the average absolute difference between the actual revenue and the model’s predicted revenue. All else equal, a lower MAE indicates a better-fitting model, though model evaluation is more nuanced than just a single metric.
+      <em>Plain Language Definition:</em> MAE represents the average absolute difference between the actual revenue and the model’s predicted revenue. All else equal, a lower MAE indicates a better-fitting model—but remember, model evaluation can be more nuanced than a single metric.
     </p>
   </div>
   
@@ -46,7 +46,7 @@
   <div id="instructions">
     <p><strong>How to Use This Tool:</strong></p>
     <ul>
-      <li>Adjust the model parameters (B0, B1, and for quadratic, B2) using the slider bars for coarse changes.</li>
+      <li>Adjust the model parameters (B₀, B₁, and for quadratic, B₂) using the slider bars for coarse changes.</li>
       <li>For greater precision, type a specific value in the text box next to each slider. That precise value will be used for calculations.</li>
       <li>The grey vertical dotted lines on the charts represent the absolute error—the difference between the predicted revenue for that search ad and the actual revenue.</li>
       <li>The charts update in real time: blue dots show actual data, and red dotted lines show the fitted models.</li>
@@ -57,13 +57,13 @@
   <h3>Linear Model Controls</h3>
   <div class="control-group">
     <label>
-      B0:
+      B₀:
       <input type="range" id="B0_linear" min="-100" max="400" step="10" value="20" oninput="syncValue('B0_linear','slider')" />
       <input type="number" id="B0_linear_num" min="-100" max="400" step="0.1" value="20" oninput="syncValue('B0_linear','number')" />
       <span id="B0_linear_value">20</span>
     </label>
     <label>
-      B1:
+      B₁:
       <input type="range" id="B1_linear" min="-0.1" max="1.1" step="0.1" value="0.5" oninput="syncValue('B1_linear','slider')" />
       <input type="number" id="B1_linear_num" min="-0.1" max="1.1" step="0.01" value="0.5" oninput="syncValue('B1_linear','number')" />
       <span id="B1_linear_value">0.5</span>
@@ -81,19 +81,19 @@
   <h3>Quadratic Model Controls</h3>
   <div class="control-group">
     <label>
-      B0:
+      B₀:
       <input type="range" id="B0_quadratic" min="-100" max="400" step="10" value="20" oninput="syncValue('B0_quadratic','slider')" />
       <input type="number" id="B0_quadratic_num" min="-100" max="400" step="0.1" value="20" oninput="syncValue('B0_quadratic','number')" />
       <span id="B0_quadratic_value">20</span>
     </label>
     <label>
-      B1:
+      B₁:
       <input type="range" id="B1_quadratic" min="-0.1" max="1.1" step="0.1" value="0.5" oninput="syncValue('B1_quadratic','slider')" />
       <input type="number" id="B1_quadratic_num" min="-0.1" max="1.1" step="0.01" value="0.5" oninput="syncValue('B1_quadratic','number')" />
       <span id="B1_quadratic_value">0.5</span>
     </label>
     <label>
-      B2:
+      B₂:
       <input type="range" id="B2_quadratic" min="-0.0005" max="0.0005" step="0.00005" value="0.0001" oninput="syncValue('B2_quadratic','slider')" />
       <input type="number" id="B2_quadratic_num" min="-0.0005" max="0.0005" step="0.000001" value="0.0001" oninput="syncValue('B2_quadratic','number')" />
       <span id="B2_quadratic_value">0.0001</span>
@@ -109,7 +109,7 @@
   <div id="questions">
     <h3>Exploratory Questions</h3>
     <ol>
-      <li>How does adjusting the parameter values (B0, B1, B2) affect the model's fit to the actual data?</li>
+      <li>How does adjusting the parameter values (B₀, B₁, B₂) affect the model's fit to the actual data?</li>
       <li>Which model (linear or quadratic) yields a lower MAE, and what might that suggest about the underlying relationship?</li>
       <li>What are some limitations of using only Search Ad Spending to predict Revenue? In other words, is it sensible to think that ad spending alone accounts for differences in ad performance?</li>
       <li>MAE is a commonly used "loss function" to calibrate a model, but it is not the most common. Mean Squared Error (MSE) is more common. What might be different about the two?</li>
