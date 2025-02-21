@@ -4,32 +4,136 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Search Ads & Revenue: Calibrate Your Response Model!</title>
-  <!-- Link to external CSS -->
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Link to external JavaScript (deferred so it loads after HTML) -->
+  
+  <!-- Plotly Library -->
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script defer src="app.js"></script>
+  
+  <!-- MathJax for LaTeX rendering -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <!-- CSS styling for the page -->
+  <style>
+    /* Use a modern, professional sans-serif font for all visible text */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 20px;
+    }
+    
+    /* Introductory Section */
+    .intro {
+      margin-bottom: 30px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+    
+    .intro .equation {
+      font-size: 16px;
+      font-weight: normal;
+      margin: 5px 0;
+    }
+    
+    /* Model equations and MAE displays */
+    .model-equation {
+      text-align: left;
+      font-weight: bold;
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+    
+    /* Increase the font size for MAE displays by 50% */
+    #mae_linear, #mae_quadratic {
+      font-size: 150%;
+    }
+    
+    /* Group related controls */
+    .control-group {
+      margin-bottom: 10px;
+    }
+    
+    .control-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    .control-group input[type="range"],
+    .control-group input[type="number"] {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    
+    /* Customize the slider thumb to be red */
+    input[type="range"]::-webkit-slider-thumb {
+      background: red;
+      border: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    input[type="range"]::-moz-range-thumb {
+      background: red;
+      border: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    
+    /* Styling for instructions and exploratory questions */
+    #instructions, #questions {
+      margin: 20px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: #eef;
+    }
+    
+    #questions ul, #questions ol {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    
+    /* Separator styling */
+    .separator {
+      border: 1px solid black;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
   <!-- Fun and Engaging Title -->
   <h1>Search Ads & Revenue: Calibrate Your Response Model!</h1>
   
-  <!-- Introductory Section -->
+  <!-- Introductory Text Section with LaTeX equations rendered by MathJax -->
   <div class="intro">
-    <p><strong>Context:</strong> This interactive tool is designed for Marketing Undergraduates taking an Analytics course. You are learning about loss functions—in this case, the Mean Absolute Error (MAE)—to calibrate the parameters of a Response Model.</p>
-    <p><strong>Scenario:</strong> Imagine you have run 30 different Search Ad campaigns last month and recorded the revenue generated from converting those ads. Each blue dot represents one campaign. We want to build a simple relationship between Search Ad Spending and Revenue using both a linear and a quadratic model. We use MAE to gauge how well each model fits the data.</p>
-    <p class="equation"><strong>MAE:</strong> (1/N) Σ |Actual_REVENUE<sub>i</sub> − Predicted_REVENUE<sub>i</sub>|</p>
-    <p class="equation"><strong>Linear Model:</strong> ŷ = B<sub>0</sub> + B<sub>1</sub> * Search_AdSpending</p>
-    <p class="equation"><strong>Quadratic Model:</strong> ŷ = B<sub>0</sub> + B<sub>1</sub> * Search_AdSpending + B<sub>2</sub> * (Search_AdSpending)<sup>2</sup></p>
-    <p><em>Plain Language Definition:</em> MAE is the average absolute difference between the observed revenue and the predicted revenue, telling you how far off the predictions are on average.</p>
+    <p>
+      <strong>Context:</strong> This interactive tool is designed for Marketing Undergraduates taking an Analytics course. You are learning about loss functions—in this case, the Mean Absolute Error (MAE)—to calibrate the parameters of a Response Model.
+    </p>
+    <p>
+      <strong>Scenario:</strong> Imagine you have run 30 different Search Ad campaigns last month and recorded the revenue generated from converting those ads. Each blue dot on the chart represents one campaign. We want to build a simple relationship between Search Ad Spending and Revenue using both a linear and a quadratic model. We use MAE to gauge how well each model fits the data.
+    </p>
+    <p class="equation">
+      <strong>MAE:</strong> $$\text{MAE} = \frac{1}{N}\sum_{i=1}^{N}\left|y_i - \hat{y}_i\right|$$
+    </p>
+    <p class="equation">
+      <strong>Linear Model:</strong> $$\hat{y} = B_0 + B_1 \cdot \text{Search\_AdSpending}$$
+    </p>
+    <p class="equation">
+      <strong>Quadratic Model:</strong> $$\hat{y} = B_0 + B_1 \cdot \text{Search\_AdSpending} + B_2 \cdot \text{Search\_AdSpending}^2$$
+    </p>
+    <p>
+      <em>Plain Language Definition:</em> MAE represents the average absolute difference between the actual revenue and the model’s predicted revenue. All else equal, a lower MAE indicates a better-fitting model, though model evaluation is more nuanced than just a single metric.
+    </p>
   </div>
   
-  <!-- How to Use This Tool (Instructions) -->
+  <!-- How to Use This Tool -->
   <div id="instructions">
     <p><strong>How to Use This Tool:</strong></p>
     <ul>
       <li>Adjust the model parameters (B0, B1, and for quadratic, B2) using the slider bars for coarse changes.</li>
-      <li>For greater precision, type a specific value in the text box next to each slider. That value will be used for all calculations.</li>
+      <li>For greater precision, type a specific value in the text box next to each slider. That precise value will be used for calculations.</li>
       <li>The grey vertical dotted lines on the charts represent the absolute error—the difference between the predicted revenue for that search ad and the actual revenue.</li>
       <li>The charts update in real time: blue dots show actual data, and red dotted lines show the fitted models.</li>
     </ul>
@@ -87,7 +191,7 @@
   <p id="mae_quadratic" class="model-equation"></p>
   <div id="quadraticPlot"></div>
   
-  <!-- Exploratory Questions Section -->
+  <!-- Exploratory Questions -->
   <div id="questions">
     <h3>Exploratory Questions</h3>
     <ol>
@@ -97,5 +201,8 @@
       <li>MAE is a commonly used "loss function" to calibrate a model, but it is not the most common. Mean Squared Error (MSE) is more common. What might be different about the two?</li>
     </ol>
   </div>
+  
+  <!-- JavaScript file (app.js) is loaded at the end -->
+  <script src="app.js" defer></script>
 </body>
 </html>
