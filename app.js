@@ -113,11 +113,11 @@
       hovermode: "closest"
     };
 
-    // Plot linear model
+    // Plot linear model with responsive configuration
     Plotly.newPlot("linearPlot", [
       { x: data.x, y: data.y, mode: "markers", type: "scatter", name: "Actual Data", marker: { color: "blue" } },
       { x: xFit, y: yLinear, mode: "lines", type: "scatter", name: "Linear Fit", line: { color: "red", dash: "dot" } }
-    ], { ...commonLayout, title: "Linear Fit", shapes: linearShapes });
+    ], { ...commonLayout, title: "Linear Fit", shapes: linearShapes }, { responsive: true });
 
     // Update linear model equation display
     document.getElementById("equation_linear").innerHTML =
@@ -128,11 +128,11 @@
     document.getElementById("mae_linear").innerHTML =
       "<strong>MAE:</strong> (1/N) Σ |Actual_REVENUE<sub>i</sub> − Predicted_REVENUE<sub>i</sub>| = " + maeLinear.toFixed(3);
 
-    // Plot quadratic model
+    // Plot quadratic model with responsive configuration
     Plotly.newPlot("quadraticPlot", [
       { x: data.x, y: data.y, mode: "markers", type: "scatter", name: "Actual Data", marker: { color: "blue" } },
       { x: xFit, y: yQuadratic, mode: "lines", type: "scatter", name: "Quadratic Fit", line: { color: "red", dash: "dot" } }
-    ], { ...commonLayout, title: "Quadratic Fit", shapes: quadraticShapes });
+    ], { ...commonLayout, title: "Quadratic Fit", shapes: quadraticShapes }, { responsive: true });
 
     // Update quadratic model equation display
     document.getElementById("equation_quadratic").innerHTML =
@@ -147,10 +147,18 @@
   // --- Initialization ---
   loadCSVData(function(loadedData) {
     data = loadedData;
-    // Set y-axis range based on loaded data
+    // Update y-axis range based on loaded data
     yMin = Math.min(...data.y) - 10;
     yMax = Math.max(...data.y) + 10;
     updatePlot();
+  });
+
+  // Add window resize listener to trigger Plotly's resize method on the chart divs
+  window.addEventListener("resize", function() {
+    const linearDiv = document.getElementById("linearPlot");
+    const quadraticDiv = document.getElementById("quadraticPlot");
+    if (linearDiv) Plotly.Plots.resize(linearDiv);
+    if (quadraticDiv) Plotly.Plots.resize(quadraticDiv);
   });
 
   // Expose syncValue globally for HTML inline event handlers
